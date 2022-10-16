@@ -1,4 +1,4 @@
-package com.mad.max.game.ecs.entity;
+package com.mad.max.game.ecs.entity.ui;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
