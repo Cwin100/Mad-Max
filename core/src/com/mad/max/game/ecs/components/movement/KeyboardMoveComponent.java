@@ -1,7 +1,5 @@
 package com.mad.max.game.ecs.components.movement;
 
-import com.mad.max.game.ecs.systems.KeyboardMoveSystem;
-
 public class KeyboardMoveComponent implements MoveComponent{
 
     public float speedX, speedY;

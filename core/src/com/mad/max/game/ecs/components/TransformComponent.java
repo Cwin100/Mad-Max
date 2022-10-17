@@ -12,4 +12,8 @@ public class TransformComponent implements Component {
     public final Vector2 size = new Vector2();
     public float rotation = 0.0f;
     public boolean isHidden = false;
+
+    public Vector2 getCenter(){
+        return new Vector2(position).mulAdd(size, .5f);
+    }
 }
