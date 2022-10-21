@@ -15,8 +15,8 @@ public class ViewManager {
     private final OrthographicCamera camera;
     private final FitViewport viewport;
 
-    public static final int WORLD_WIDTH = 2560;
-    public static final int WORLD_HEIGHT = 1440;
+    public static final int WORLD_WIDTH = 3200;
+    public static final int WORLD_HEIGHT = 1800;
 
 
     public static ViewManager get(){
@@ -25,9 +25,8 @@ public class ViewManager {
 
     private ViewManager(){
         camera = new OrthographicCamera();
-        viewport = new FitViewport(WORLD_WIDTH,  WORLD_HEIGHT,camera);
+        viewport = new FitViewport(WORLD_WIDTH,  WORLD_HEIGHT, camera);
         viewport.apply();
-        camera.position.set(camera.viewportWidth/2,camera.viewportHeight/2,0);
     }
 
     public void resize(int width, int height) {

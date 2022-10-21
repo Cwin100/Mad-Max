@@ -15,7 +15,6 @@ public class ScreenManager {
     }
 
     public HashMap<String, Screen> screens;
-    private final boolean isCurrenScreenEnded = false;
     private Screen current = null;
     private String currentName = null;
 
