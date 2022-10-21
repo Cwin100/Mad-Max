@@ -18,8 +18,6 @@ public class Actor extends Entity {
     GraphicComponent graphic;
     Map<Class<? extends MoveComponent>, MoveComponent> movement;
 
-    Actor carrier;
-
     public Actor(float x, float y, float w, float h, Texture texture, GraphicComponent.Layer layer){
         this.graphic = new GraphicComponent();
         graphic.texture = texture;
@@ -52,25 +50,5 @@ public class Actor extends Entity {
     public MoveComponent getMovement(Class<? extends MoveComponent> moveClass){
         return movement.get(moveClass);
     }
-
-    public void setCarrier(Actor carrier){
-        //Remove old carrier
-        if(this.carrier != null){
-            CarryMoveComponent carryMove = (CarryMoveComponent) this.carrier.getMovement(CarryMoveComponent.class);
-            if (carryMove != null) {
-                carryMove.carriedEntities.remove(this);
-            }
-        }
-
-        //Add new carrier
-        this.carrier = carrier;
-        if(this.carrier != null){
-            CarryMoveComponent carryMove = (CarryMoveComponent) this.carrier.getMovement(CarryMoveComponent.class);
-            if (carryMove != null) {
-                carryMove.carriedEntities.add(this);
-            }
-        }
-    }
-
 
 }
