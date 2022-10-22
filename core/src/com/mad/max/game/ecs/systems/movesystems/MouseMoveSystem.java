@@ -3,12 +3,14 @@
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
+import com.badlogic.ashley.systems.SortedIteratingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.mad.max.game.ecs.components.ClickComponent;
 import com.mad.max.game.ecs.components.TransformComponent;
 import com.mad.max.game.ecs.components.movement.CarriedComponent;
+import com.mad.max.game.ecs.components.movement.CarryMoveComponent;
 import com.mad.max.game.ecs.components.movement.GridComponent;
 import com.mad.max.game.ecs.components.movement.MouseMoveComponent;
 import com.mad.max.game.ecs.entity.actors.TargetPosition;
@@ -19,14 +21,15 @@ import com.mad.max.game.managers.SelectionManager;
 
 import java.awt.geom.Line2D;
 
- public class MouseMoveSystem extends SortedIteratingMoveSystem {
+ public class MouseMoveSystem extends SortedIteratingSystem {
 
     private final ComponentMapper<MouseMoveComponent> mouseMoveM = ComponentMapper.getFor(MouseMoveComponent.class);
      private final ComponentMapper<TransformComponent> transformM = ComponentMapper.getFor(TransformComponent.class);
      private final ComponentMapper<GridComponent> gridM = ComponentMapper.getFor(GridComponent.class);
      private final ComponentMapper<CarriedComponent> carriedM = ComponentMapper.getFor(CarriedComponent.class);
+     private final ComponentMapper<CarryMoveComponent> carryM = ComponentMapper.getFor(CarryMoveComponent.class);
 
-    private MouseManager mm = MouseManager.get();
+     private MouseManager mm = MouseManager.get();
      private SelectionManager sm = SelectionManager.get();
      private GridManager gm = GridManager.get();
 
@@ -35,21 +38,17 @@ import java.awt.geom.Line2D;
     }
 
     @Override
-    protected Vector2 calculateMoveDelta(Entity entity, float deltaTime) {
+    protected void processEntity(Entity entity, float deltaTime) {
         TransformComponent transform = transformM.get(entity);
         MouseMoveComponent mouseMove = mouseMoveM.get(entity);
-
-        Vector2 moveDelta = new Vector2(0, 0);
 
         Rectangle boundary = new Rectangle(transform.position.x, transform.position.y, transform.size.x, transform.size.y);
         Vector2 mousePos = mm.getPos();
 
         if(mm.leftClick() && boundary.contains(mousePos)) {
-            Gdx.app.log("MouseMoveSystem", "Entity selected");
             sm.setSelected(entity);
         }
         else if(mm.rightClick() && sm.getSelected() == entity) {
-            Gdx.app.log("MouseMoveSystem", "Entity directed");
             Vector2 targetPos = mousePos;
 
             CarriedComponent carried = carriedM.get(entity);
@@ -62,11 +61,9 @@ import java.awt.geom.Line2D;
 
                     offsetPixels.add(referenceObject.position.x % gm.getWidth(), referenceObject.position.y % gm.getHeight());
                 }
-                Gdx.app.log("Grid Align", "" + offsetPixels);
                 targetPos.sub(offsetPixels);
 
                 Vector2 targetGridPosition = new Vector2((int)targetPos.x / gm.getWidth() + .5f, (int)targetPos.y / gm.getHeight() + .5f);
-                Gdx.app.log("Grid Alignment", "GridPos " + targetGridPosition);
                 if((transform.size.x -1) % (2 * gm.getWidth()) > gm.getWidth()){
                     targetGridPosition.add(.5f, 0);
                 }
@@ -75,8 +72,6 @@ import java.awt.geom.Line2D;
                 }
                 targetPos = new Vector2(targetGridPosition.x * gm.getWidth(), targetGridPosition.y * gm.getHeight());
                 targetPos.add(offsetPixels);
-                Gdx.app.log("Grid Alignment", "" + targetPos + "|" + mousePos + "|" + targetGridPosition);
-
             }
 
             mouseMove.targetPosition = new TargetPosition(targetPos.x, targetPos.y);
@@ -88,23 +83,30 @@ import java.awt.geom.Line2D;
 
         if(mouseMove.targetPosition != null){
             Vector2 targetPos = transformM.get(mouseMove.targetPosition).position;
+            CarryMoveComponent carry = carryM.get(entity);
             double directionOfTravel = new Vector2(targetPos).sub(transform.getCenter()).angleRad();
             double pointDistance = distance(targetPos, transform.getCenter());
             float moveDistance = mouseMove.speed * deltaTime;
 
             if(pointDistance < moveDistance){
-                moveDelta.add(targetPos);
-                moveDelta.sub(transform.getCenter());
+                Vector2 delta = new Vector2(targetPos);
+                delta.sub(transform.getCenter());
+                mouseMove.move(delta);
+                if(carry != null){
+                    carry.move(delta);
+                }
                 mouseMove.targetPosition = null;
             }else{
-                moveDelta.add(new Vector2((float) (moveDistance * Math.cos(directionOfTravel)), (float) (moveDistance * Math.sin(directionOfTravel))));
+                Vector2 delta = new Vector2((float) (moveDistance * Math.cos(directionOfTravel)), (float) (moveDistance * Math.sin(directionOfTravel)));
+                mouseMove.move(delta);
+                if(carry != null){
+                    carry.move(delta);
+                }
             }
         }
-
-        return moveDelta;
     }
 
      double distance(Vector2 object1, Vector2 object2){
          return Math.sqrt(Math.pow((object2.x - object1.x), 2) + Math.pow((object2.y - object1.y), 2));
      }
-}
+ }

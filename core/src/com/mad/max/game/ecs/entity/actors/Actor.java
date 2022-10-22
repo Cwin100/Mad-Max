@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class Actor extends Entity {
 
-    TransformComponent transform;
+    public TransformComponent transform;
     GraphicComponent graphic;
     Map<Class<? extends MoveComponent>, MoveComponent> movement;
 

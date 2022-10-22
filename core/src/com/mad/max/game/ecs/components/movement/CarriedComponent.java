@@ -1,18 +1,21 @@
 package com.mad.max.game.ecs.components.movement;
 
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Vector2;
 import com.mad.max.game.ecs.entity.actors.Actor;
 
-public class CarriedComponent implements MoveComponent{
+public class CarriedComponent extends MoveComponent{
 
     Actor carrierEntity = null;
     Actor carriedEntity;
 
-    public CarriedComponent(Actor carried){
-        this.carriedEntity = carried;
+    public CarriedComponent(Actor owner){
+        super(owner.transform);
+        this.carriedEntity = owner;
     }
-    public CarriedComponent(Actor carried, Actor carrier){
-        this.carriedEntity = carried;
+    public CarriedComponent(Actor owner, Actor carrier){
+        this(owner);
         setCarrier(carrier);
     }
 
@@ -43,4 +46,11 @@ public class CarriedComponent implements MoveComponent{
         return carriedEntity;
     }
 
+    @Override
+    public void move(Vector2 delta) {
+        super.move(delta);
+        if(this.carriedEntity.getMovement(CarryMoveComponent.class) != null){//move carrier components
+            this.carriedEntity.getMovement(CarryMoveComponent.class).move(delta);
+        }
+    }
 }

@@ -39,11 +39,12 @@ public class GameScreen extends BaseScreen {
         engine.addSystem(mouseMoveSystem);
 
         Actor character3 = new Actor(500, 100, 75, 150, TextureUtil.solidTexture(Color.ORANGE), GraphicComponent.Layer.Character);
-        character3.addMovement(new MouseMoveComponent(300));
-        character3.addMovement(new GridComponent());
+        character3.addMovement(new MouseMoveComponent(character3, 300));
+        character3.addMovement(new GridComponent(character3));
         engine.addEntity(character3);
 
         Actor truck = new Truck(11, 1, TruckUtil.testTruck1());
+        truck.addMovement(new KeyboardMoveComponent(truck, 300, 300));
         engine.addEntity(truck);
 
         character3.addMovement(new CarriedComponent(character3, truck));

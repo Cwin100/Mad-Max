@@ -11,7 +11,7 @@ public class GridActor extends Actor {
 
     public GridActor(float x, float y, float gw, float gh, Texture texture, GraphicComponent.Layer layer){
         super(x, y, gw * gm.getWidth(), gh * gm.getHeight(), texture, layer);
-        this.addMovement(new GridComponent());
+        this.addMovement(new GridComponent(this));
     }
 
 }

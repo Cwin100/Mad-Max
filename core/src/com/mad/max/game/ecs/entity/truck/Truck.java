@@ -24,7 +24,7 @@ public class Truck extends GridActor {
 
     public Truck(float gx, float gy, TruckUtil.TruckConfig config) {
         super(gm.getWidth() * gx, gm.getHeight() * gy, GRID_WIDTH, GRID_HEIGHT, TextureUtil.gridTexture(TRUCK_COLOR, GRID_COLOR, WIDTH, HEIGHT), GraphicComponent.Layer.Truck);
-        this.addMovement(new CarryMoveComponent());
+        this.addMovement(new CarryMoveComponent(this));
         this.init_truck(config);
     }
 
