@@ -14,11 +14,12 @@ public class GraphicComponent implements Component {
     public enum Layer{
         Background(0),
         Truck(1),
+        Room(2),
 
-        Character(2),
-        MenuBackground(3),
-        MenuButton(4),
-        Debug(5);
+        Character(3),
+        MenuBackground(4),
+        MenuButton(5),
+        Debug(6);
 
         private final int value;
 
