@@ -5,17 +5,14 @@ import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 
 public class GameTexturePacker {
     //private static final String INPUT_DIR = Gdx.files.internal("assets/data/animations").toString();
-    private static final String INPUT_DIR = "animations/";
-    private static final String OUTPUT_DIR = "../assets/animations/";
-    private static final String PACK_FILE = "animations";
+    private static final String ANIMATION_INPUT_DIR = "animations/";
+    private static final String ANIMATION_OUTPUT_DIR = "../assets/animations/";
+    private static final String ANIMATION_PACK_FILE = "animations";
 
-    private static final String LOADING_INPUT_DIR = "loading/";
-    private static final String LOADING_OUTPUT_DIR = "../android/assets/animations/";
-    private static final String LOADING_PACK_FILE = "loading";
+    private static final String TEXTURE_INPUT_DIR = "textures/";
+    private static final String TEXTURE_OUTPUT_DIR = "../assets/textures/";
+    private static final String TEXTURE_PACK_FILE = "textures";
 
-    private static final String SPRITES_INPUT_DIR = "sprites/";
-    private static final String SPRITES_OUTPUT_DIR = "../android/assets/sprites/";
-    private static final String SPRITES_PACK_FILE = "sprites";
 
     private static final float[] HUNDRED_PERCENT = new float[] {1f};
     private static final float[] FIFTY_PERCENT = new float[] {0.5f};
@@ -34,7 +31,8 @@ public class GameTexturePacker {
 
         // pack the images
         settings.combineSubdirectories = true;
-        TexturePacker.process(settings, INPUT_DIR, OUTPUT_DIR, PACK_FILE);
+        TexturePacker.process(settings, ANIMATION_INPUT_DIR, ANIMATION_OUTPUT_DIR, ANIMATION_PACK_FILE);
+        TexturePacker.process(settings, TEXTURE_INPUT_DIR, TEXTURE_OUTPUT_DIR, TEXTURE_PACK_FILE);
     }
 }
 

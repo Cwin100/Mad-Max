@@ -1,0 +1,118 @@
+
+textures.png
+size: 256, 64
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+room_icons/ArtilleryBeamSymbol
+  rotate: false
+  xy: 0, 28
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/BackupBatterySymbol
+  rotate: false
+  xy: 0, 0
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/CloakingSymbol
+  rotate: false
+  xy: 28, 28
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/CloneBaySymbol
+  rotate: false
+  xy: 28, 0
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/CrewTeleporterSymbol
+  rotate: false
+  xy: 56, 28
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/DoorSystemSymbol
+  rotate: false
+  xy: 56, 0
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/DroneControlSymbol
+  rotate: false
+  xy: 84, 28
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/EnginesSymbol
+  rotate: false
+  xy: 84, 0
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/HackingSymbol
+  rotate: false
+  xy: 112, 28
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/MedbaySymbol
+  rotate: false
+  xy: 112, 0
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/MindControlSymbol
+  rotate: false
+  xy: 140, 28
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/OxygenSymbol
+  rotate: false
+  xy: 140, 0
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/PilotingSymbol
+  rotate: false
+  xy: 168, 28
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/SensorsSymbol
+  rotate: false
+  xy: 168, 0
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/ShieldsSymbol
+  rotate: false
+  xy: 196, 28
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+room_icons/WeaponControlSymbol
+  rotate: false
+  xy: 196, 0
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
