@@ -4,112 +4,112 @@ size: 256, 64
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-room_icons/ArtilleryBeamSymbol
+roomIcons/ArtilleryBeamSymbol
   rotate: false
   xy: 0, 28
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/BackupBatterySymbol
+roomIcons/BackupBatterySymbol
   rotate: false
   xy: 0, 0
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/CloakingSymbol
+roomIcons/CloakingSymbol
   rotate: false
   xy: 28, 28
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/CloneBaySymbol
+roomIcons/CloneBaySymbol
   rotate: false
   xy: 28, 0
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/CrewTeleporterSymbol
+roomIcons/CrewTeleporterSymbol
   rotate: false
   xy: 56, 28
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/DoorSystemSymbol
+roomIcons/DoorSystemSymbol
   rotate: false
   xy: 56, 0
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/DroneControlSymbol
+roomIcons/DroneControlSymbol
   rotate: false
   xy: 84, 28
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/EnginesSymbol
+roomIcons/EnginesSymbol
   rotate: false
   xy: 84, 0
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/HackingSymbol
+roomIcons/HackingSymbol
   rotate: false
   xy: 112, 28
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/MedbaySymbol
+roomIcons/MedbaySymbol
   rotate: false
   xy: 112, 0
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/MindControlSymbol
+roomIcons/MindControlSymbol
   rotate: false
   xy: 140, 28
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/OxygenSymbol
+roomIcons/OxygenSymbol
   rotate: false
   xy: 140, 0
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/PilotingSymbol
+roomIcons/PilotingSymbol
   rotate: false
   xy: 168, 28
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/SensorsSymbol
+roomIcons/SensorsSymbol
   rotate: false
   xy: 168, 0
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/ShieldsSymbol
+roomIcons/ShieldsSymbol
   rotate: false
   xy: 196, 28
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-room_icons/WeaponControlSymbol
+roomIcons/WeaponControlSymbol
   rotate: false
   xy: 196, 0
   size: 26, 26

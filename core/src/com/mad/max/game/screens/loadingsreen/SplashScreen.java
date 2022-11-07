@@ -12,6 +12,8 @@ import com.mad.max.game.managers.AssetLoader;
 import com.mad.max.game.managers.ScreenManager;
 import com.mad.max.game.managers.ViewManager;
 import com.mad.max.game.screens.BaseScreen;
+import com.mad.max.game.screens.gamescreen.GameScreen;
+import com.mad.max.game.screens.homescreen.HomeScreen;
 
 /**
  * Created by barry on 12/8/15 @ 8:24 PM.
@@ -30,8 +32,11 @@ public class SplashScreen extends BaseScreen {
     public void render(float delta) {
         super.render(delta);
 
-        if (AssetLoader.am.update()) {
+        AssetLoader.load();
+
+        if (true) {
             Gdx.app.log("Splash Screen", "Assets are Loaded!");
+            sm.addScreen("homeScreen", new HomeScreen(batch));
             sm.setCurrent("homeScreen");
         } else {
             vm.startRender(batch);
@@ -45,11 +50,14 @@ public class SplashScreen extends BaseScreen {
             shapeRenderer.setProjectionMatrix(vm.getCamera().combined);
             shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
             shapeRenderer.setColor(Color.CYAN);
-            shapeRenderer.rect(0, 0, vm.getViewport().getWorldWidth() * AssetLoader.am.getProgress(), vm.getViewport().getWorldHeight() / 5f);
+            //shapeRenderer.rect(0, 0, vm.getViewport().getWorldWidth() * AssetLoader.am.getProgress(), vm.getViewport().getWorldHeight() / 5f);
             shapeRenderer.end();
 
             vm.finishRender();
 
         }
     }
+
+    @Override
+    public void init() {}
 }

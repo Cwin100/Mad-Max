@@ -8,7 +8,7 @@ import com.mad.max.game.MadMaxGame;
 public class DesktopLauncher {
 	public static void main(String[] arg) {
 		//create atlas
-		GameTexturePacker.packAtlas();
+		//GameTexturePacker.packAtlas();
 
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);

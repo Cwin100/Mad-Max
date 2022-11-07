@@ -15,8 +15,8 @@ public class ViewManager {
     private final OrthographicCamera camera;
     private final FitViewport viewport;
 
-    public static final int WORLD_WIDTH = 3200;
-    public static final int WORLD_HEIGHT = 1800;
+    public static final int WORLD_WIDTH = 3840;
+    public static final int WORLD_HEIGHT = 2160;
 
 
     public static ViewManager get(){

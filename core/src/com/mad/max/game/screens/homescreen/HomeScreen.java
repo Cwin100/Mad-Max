@@ -5,8 +5,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mad.max.game.ecs.entity.background.SolidBackground;
+import com.mad.max.game.ecs.entity.room.RoomIcon;
 import com.mad.max.game.ecs.systems.ClickSystem;
 import com.mad.max.game.ecs.systems.RenderSystem;
+import com.mad.max.game.managers.AssetLoader;
 import com.mad.max.game.screens.BaseScreen;
 
 /**
@@ -15,23 +17,21 @@ import com.mad.max.game.screens.BaseScreen;
 public class HomeScreen extends BaseScreen {
     public HomeScreen(SpriteBatch batch) {
         super(batch);
-
-        init();
     }
 
-    private void init() {
+    public void init() {
         Gdx.app.log("HomeScreen", "Initializing");
 
         RenderSystem renderSystem = new RenderSystem(super.batch);
         ClickSystem clickSystem = new ClickSystem();
-        engine.addSystem(renderSystem);
-        engine.addSystem(clickSystem);
+        this.addSystem(renderSystem);
+        this.addSystem(clickSystem);
 
         Entity startButton = new StartButton(vm.WORLD_WIDTH/2,  vm.WORLD_HEIGHT/2);
-        engine.addEntity(startButton);
+        this.addEntity(startButton);
 
         Entity background = new SolidBackground(Color.BLUE);
-        engine.addEntity(background);
+        this.addEntity(background);
 
         Gdx.app.log("HomeScreen", "Initialized");
     }

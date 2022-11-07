@@ -17,6 +17,7 @@ import com.mad.max.game.ecs.entity.actors.TargetPosition;
 import com.mad.max.game.ecs.systems.LayerComparator;
 import com.mad.max.game.managers.GridManager;
 import com.mad.max.game.managers.MouseManager;
+import com.mad.max.game.managers.ScreenManager;
 import com.mad.max.game.managers.SelectionManager;
 
 import java.awt.geom.Line2D;
@@ -32,6 +33,7 @@ import java.awt.geom.Line2D;
      private MouseManager mm = MouseManager.get();
      private SelectionManager sm = SelectionManager.get();
      private GridManager gm = GridManager.get();
+     private ScreenManager screenManager = ScreenManager.get();
 
     public MouseMoveSystem() {
         super(Family.all(MouseMoveComponent.class, TransformComponent.class).get(), new LayerComparator());
@@ -75,6 +77,7 @@ import java.awt.geom.Line2D;
             }
 
             mouseMove.targetPosition = new TargetPosition(targetPos.x, targetPos.y);
+            screenManager.getCurrent().addEntity(mouseMove.targetPosition);
             if(carried != null){
                 //Move the target based on the carrier
                 mouseMove.targetPosition.addMovement(new CarriedComponent(mouseMove.targetPosition, carried.getCarrier()));
@@ -95,6 +98,7 @@ import java.awt.geom.Line2D;
                 if(carry != null){
                     carry.move(delta);
                 }
+                this.screenManager.getCurrent().removeEntity(mouseMove.targetPosition);
                 mouseMove.targetPosition = null;
             }else{
                 Vector2 delta = new Vector2((float) (moveDistance * Math.cos(directionOfTravel)), (float) (moveDistance * Math.sin(directionOfTravel)));

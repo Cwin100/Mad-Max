@@ -2,6 +2,7 @@ package com.mad.max.game.ecs.entity.actors;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mad.max.game.ecs.components.GraphicComponent;
 import com.mad.max.game.ecs.components.movement.CarryMoveComponent;
 import com.mad.max.game.ecs.components.movement.MoveComponent;
@@ -18,7 +19,7 @@ public class Actor extends Entity {
     GraphicComponent graphic;
     Map<Class<? extends MoveComponent>, MoveComponent> movement;
 
-    public Actor(float x, float y, float w, float h, Texture texture, GraphicComponent.Layer layer){
+    public Actor(float x, float y, float w, float h, TextureRegion texture, GraphicComponent.Layer layer){
         this.graphic = new GraphicComponent();
         graphic.texture = texture;
         graphic.layer = layer;

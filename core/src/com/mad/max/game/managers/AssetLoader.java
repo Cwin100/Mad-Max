@@ -1,5 +1,6 @@
 package com.mad.max.game.managers;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
@@ -15,18 +16,15 @@ import com.badlogic.gdx.utils.Array;
  */
 public class AssetLoader {
 
-    public static AssetManager am;
-
-    public static AssetManager load() {
+    public static void load() {
 
         splashScreen = new TextureRegion(new Texture("badlogic.jpg"));
 
-        am = new AssetManager();
-        am.load(ANI_ATLAS, TextureAtlas.class);
-        am.load(TEXTURE_ATLAS, TextureAtlas.class);
-        //am.load(FONT, BITMAP_FONT);
 
-        return am;
+        atlas = new TextureAtlas(Gdx.files.internal(TEXTURE_ATLAS));
+        //am.load(ANI_ATLAS, TextureAtlas.class);
+        //am.load(TEXTURE_ATLAS, TextureAtlas.class);
+        //am.load(FONT, BITMAP_FONT);
     }
 
     //public static Array<TextureAtlas.AtlasRegion> getPuffinArray() {
@@ -37,27 +35,31 @@ public class AssetLoader {
     //    return am.get(ANI_ATLAS, TEXTURE_ATLAS).findRegions("puffin/runnin");
     //}
 
-    public static Texture getTexture(String textureID){
-        return am.get(TEXTURE_ATLAS, TextureAtlas.class).findRegions(textureID).first().getTexture();
+    public static TextureRegion getTexture(String textureID){
+        Gdx.app.log("Here", textureID);
+        return atlas.findRegion(textureID);
     }
 
+    //Atlas
+    static TextureAtlas atlas;
+
     //Icons
-    public static final String ARTILLERY_ICON = "room_icons/ArtilleryBeamSymbol";
-    public static final String BATTERY_ICON = "room_icons/BackupBatterySymbol";
-    public static final String CLOAK_ICON = "room_icons/CloakingSymbol";
-    public static final String CLONE_BAY_ICON = "room_icons/CloneBaySymbol";
-    public static final String TELEPORT_ICON = "room_icons/CrewTeleporterSymbol";
-    public static final String DOOR_ICON = "room_icons/DoorSystemSymbol";
-    public static final String DRONE_ICON = "room_icons/DroneControlSymbol";
-    public static final String ENGINES_ICON = "room_icons/EnginesSymbol";
-    public static final String HACKING_ICON = "room_icons/HackingSymbol";
-    public static final String MEDBAY_ICON = "room_icons/MedbaySymbol";
-    public static final String MIND_CONTROL_ICON = "room_icons/MindControlSymbol";
-    public static final String OXYGEN_ICON = "room_icons/OxygenSymbol";
-    public static final String PILOT_ICON = "room_icons/PilotSymbol";
-    public static final String SENSORS_ICON = "room_icons/SensorsSymbol";
-    public static final String SHIELDS_ICON = "room_icons/ShieldsSymbol";
-    public static final String WEAPONS_ICON = "room_icons/WeaponControlSymbol";
+    public static final String ARTILLERY_PATH = "roomIcons/ArtilleryBeamSymbol";
+    public static final String BATTERY_PATH = "roomIcons/BackupBatterySymbol";
+    public static final String CLOAK_PATH = "roomIcons/CloakingSymbol";
+    public static final String CLONE_BAY_PATH = "roomIcons/CloneBaySymbol";
+    public static final String TELEPORT_PATH = "roomIcons/CrewTeleporterSymbol";
+    public static final String DOOR_PATH = "roomIcons/DoorSystemSymbol";
+    public static final String DRONE_PATH = "roomIcons/DroneControlSymbol";
+    public static final String ENGINES_PATH = "roomIcons/EnginesSymbol";
+    public static final String HACKING_PATH = "roomIcons/HackingSymbol";
+    public static final String MEDBAY_PATH = "roomIcons/MedbaySymbol";
+    public static final String MIND_CONTROL_PATH = "roomIcons/MindControlSymbol";
+    public static final String OXYGEN_PATH = "roomIcons/OxygenSymbol";
+    public static final String PILOT_PATH = "roomIcons/PilotSymbol";
+    public static final String SENSORS_PATH = "roomIcons/SensorsSymbol";
+    public static final String SHIELDS_PATH = "roomIcons/ShieldsSymbol";
+    public static final String WEAPONS_PATH = "roomIcons/WeaponControlSymbol";
 
     public static final FileHandle LEMON_MILK_FONT_PATH = new FileHandle("fonts/LEMONMILK-Regular.otf");
 

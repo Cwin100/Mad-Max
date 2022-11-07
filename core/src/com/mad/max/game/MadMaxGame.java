@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mad.max.game.managers.AssetLoader;
 import com.mad.max.game.managers.ScreenManager;
+import com.mad.max.game.screens.BaseScreen;
 import com.mad.max.game.screens.gamescreen.GameScreen;
 import com.mad.max.game.screens.loadingsreen.SplashScreen;
 import com.mad.max.game.screens.homescreen.HomeScreen;
@@ -24,15 +25,11 @@ public class MadMaxGame extends Game {
 	public void create() {
 
 
-		am = AssetLoader.load();
+		//am = AssetLoader.load();
 		this.batch = new SpriteBatch();
 
-		Screen loadingScreen = new SplashScreen(batch);
-		Screen homeScreen = new HomeScreen(batch);
-		Screen gameScreen = new GameScreen(batch);
+		BaseScreen loadingScreen = new SplashScreen(batch);
 		sm.addScreen("loadingScreen", loadingScreen);
-		sm.addScreen("homeScreen", homeScreen);
-		sm.addScreen("gameScreen", gameScreen);
 
 		img = new Texture("badlogic.jpg");
 	}

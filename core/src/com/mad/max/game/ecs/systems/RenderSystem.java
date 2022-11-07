@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.SortedIteratingSystem;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.mad.max.game.ecs.components.GraphicComponent;
@@ -25,6 +26,8 @@ public class RenderSystem extends SortedIteratingSystem {
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
+        //Gdx.app.log("RenderSystem", "" + entity);
+
         TransformComponent transform = transformM.get(entity);
         GraphicComponent graphic = graphicM.get(entity);
         TextComponent text = textM.get(entity);

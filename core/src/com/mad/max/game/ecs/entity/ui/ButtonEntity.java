@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.mad.max.game.ecs.components.ClickComponent;
 import com.mad.max.game.ecs.components.GraphicComponent;
@@ -62,13 +63,13 @@ public abstract class ButtonEntity extends Entity {
         return font12;
     }
 
-    private static Texture createSolidBackground(float w, float h, Color color) {
+    private static TextureRegion createSolidBackground(float w, float h, Color color) {
         Pixmap pixmap = new Pixmap((int) w, (int) h, Pixmap.Format.RGBA8888);
         pixmap.setColor(color);
         pixmap.fillRectangle(0, 0, (int) w, (int) h);
         Texture texture = new Texture(pixmap);
         pixmap.dispose();
-        return texture;
+        return new TextureRegion(texture);
     }
 
     private static int numLines(String str) {

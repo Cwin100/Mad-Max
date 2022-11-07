@@ -1,6 +1,7 @@
 package com.mad.max.game.managers;
 
 import com.badlogic.gdx.Screen;
+import com.mad.max.game.screens.BaseScreen;
 
 import java.util.HashMap;
 
@@ -14,24 +15,25 @@ public class ScreenManager {
         return manager;
     }
 
-    public HashMap<String, Screen> screens;
-    private Screen current = null;
+    public HashMap<String, BaseScreen> screens;
+    private BaseScreen current = null;
     private String currentName = null;
 
     ScreenManager() {
         screens = new HashMap<>();
     }
 
-    public void addScreen(String screenName, Screen screen) {
+    public void addScreen(String screenName, BaseScreen screen) {
         screens.put(screenName, screen);
         if(current == null){
             current = screen;
             currentName = screenName;
         }
+        screen.init();
     }
 
     public void setCurrent(String screenName) {
-        Screen newScreen = screens.get(screenName);
+        BaseScreen newScreen = screens.get(screenName);
         if(newScreen != null){
             current = newScreen;
             currentName = screenName;
@@ -42,7 +44,11 @@ public class ScreenManager {
         return currentName;
     }
 
-    public Screen getCurrent() {
+    public BaseScreen getCurrent() {
         return current;
+    }
+
+    public BaseScreen getScreen(String screenName) {
+        return screens.get(screenName);
     }
 }

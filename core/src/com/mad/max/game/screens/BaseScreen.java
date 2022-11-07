@@ -1,5 +1,7 @@
 package com.mad.max.game.screens;
 
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,7 +13,7 @@ public abstract class BaseScreen extends ScreenAdapter {
 
     protected final ViewManager vm = ViewManager.get();
     protected final ScreenManager sm = ScreenManager.get();
-    protected final PooledEngine engine;
+    final PooledEngine engine;
     protected final SpriteBatch batch;
 
     public BaseScreen(SpriteBatch batch) {
@@ -31,5 +33,23 @@ public abstract class BaseScreen extends ScreenAdapter {
         engine.update(delta);
         batch.end();
         vm.finishRender();
+    }
+
+    public void addEntity(Entity entity){
+        this.engine.addEntity(entity);
+    }
+
+    public void removeEntity(Entity entity){
+        this.engine.removeEntity(entity);
+    }
+
+    public void addSystem(EntitySystem system){
+        this.engine.addSystem(system);
+    }
+
+    public abstract void init();
+
+    public SpriteBatch getBatch() {
+        return batch;
     }
 }
